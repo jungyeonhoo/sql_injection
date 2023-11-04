@@ -18,6 +18,18 @@ const routes = [
         component: () =>
           import(/* webpackChunkName: "home" */ "@/components/SignUp.vue"),
       },
+      {
+        path: "/userpage",
+        name: "userpage",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/UserPage.vue"),
+      },
+      {
+        path: "/admin",
+        name: "admin",
+        component: () =>
+          import(/* webpackChunkName: "home" */ "@/views/AdminPage.vue"),
+      },
     ],
   },
 ];

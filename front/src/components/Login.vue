@@ -42,8 +42,8 @@ export default {
     submit() {
       let id_input = this.id_input;
       const $this = this;
-      this.id_input = this.id_input.trim();
-      this.ps_input = this.ps_input.trim();
+      // this.id_input = this.id_input.trim();
+      // this.ps_input = this.ps_input.trim();
 
       if (this.id_input == "") {
         alert("You must write your ID");
@@ -62,16 +62,21 @@ export default {
         //   this.id_input = "";
         //   this.ps_input = "";
       } else {
+        const id = this.id_input;
         axios
           .post("https://loginbackend-cyltk.run.goorm.site/login", {
             userID: this.id_input,
             password: this.ps_input,
           })
           .then(function (response) {
-            console.log(response["data"]);
             if (response["data"]["status"] == "SUCCESS") {
-              alert(response["data"]["message"]);
-              $this.$router.push("/home");
+              // alert(response["data"]["message"]);
+              alert(id + "님 안녕하세요");
+              if (id === "admin") {
+                $this.$router.push("/admin");
+              } else {
+                $this.$router.push("/userpage");
+              }
             } else if (response["data"]["status"] == "FAIL") {
               alert(response["data"]["message"]); // data
             }
